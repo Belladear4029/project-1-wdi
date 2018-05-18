@@ -1,5 +1,4 @@
 $(() => {
-
   const timings1 = [500, 1000, 3000, 5000, 8000];
   const timings2 = [2000, 3000, 5000, 7000, 10000];
   const timings3 = [6000, 7000, 9000];
@@ -9,6 +8,8 @@ $(() => {
   const $target2 = $('#2');
   const $target3 = $('#3');
   const $target4 = $('#4');
+
+  //fireball function
 
   function fireBall(target){
     const $ball = $('<div></div>');
@@ -22,7 +23,23 @@ $(() => {
         clearInterval(intervalId);
       }
     }, 5);
+
+    //first collision
+
+    const $ballOffset = $ball.offset();
+    const $targetOffset = target.offset();
+
+    function collision(){
+      if (($ballOffset.top + $ball.height()) > $targetOffset.top &&
+        $ballOffset.top < ($targetOffset.top + target.height())) {
+        console.log('collision detected');
+      }
+    }
+    collision();
   }
+
+
+  //intervals
 
   setInterval(function(){
     for (let i = 0; i < timings1.length; i++) {
@@ -56,15 +73,19 @@ $(() => {
     }
   }, 10000);
 
-//function collision
-  function collision(target){
-    if ($ball.position().top>(target.position().top+target.width()) {
-      console.log('collision detected');
-    }
-}
-//function checkForMatch
 
-//function scoreIncrease
+
+  //function first collision
+  //
+
+
+
+  //function centre collision
+
+
+  //function checkForMatch
+
+  //function scoreIncrease
 
 
 });
