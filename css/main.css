@@ -1,14 +1,14 @@
-section {
+.targets {
   display: flex;
   justify-content: space-around;
   margin-top: 30px; }
-  section div {
+  .targets div {
     border: 1px solid black;
     height: 50px;
     width: 50px;
     border-radius: 50%; }
 
-.ball {
+.balls {
   position: fixed;
   bottom: 0;
   border: 1px solid black;
