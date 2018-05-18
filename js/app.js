@@ -9,6 +9,8 @@ $(() => {
   const $target3 = $('#3');
   const $target4 = $('#4');
 
+
+
   //fireball function
 
   function fireBall(target){
@@ -16,26 +18,25 @@ $(() => {
     $ball.addClass('balls');
     $ball.appendTo('.targets');
     $ball.css('left', `${target.position().left}px`);
+
     const intervalId = setInterval(function(){
       $ball.css('top', '-=1px');
+
+      //first collision
+
+      const $ballOffset = $ball.offset();
+      const $targetOffset = target.offset();
+
+      if ($ballOffset.top < $targetOffset.top + target.height()) {
+        console.log('collision detected');
+      }
+
       if ($ball.position().top+$ball.height() === 0) {
         $ball.remove();
         clearInterval(intervalId);
+
       }
     }, 5);
-
-    //first collision
-
-    const $ballOffset = $ball.offset();
-    const $targetOffset = target.offset();
-
-    function collision(){
-      if (($ballOffset.top + $ball.height()) > $targetOffset.top &&
-        $ballOffset.top < ($targetOffset.top + target.height())) {
-        console.log('collision detected');
-      }
-    }
-    collision();
   }
 
 
@@ -47,7 +48,7 @@ $(() => {
         fireBall($target1);
       }, timings1[i]);
     }
-  }, 10000);
+  }, 1000);
 
   setInterval(function(){
     for (let i = 0; i < timings2.length; i++) {
@@ -72,12 +73,6 @@ $(() => {
       }, timings4[i]);
     }
   }, 10000);
-
-
-
-  //function first collision
-  //
-
 
 
   //function centre collision
