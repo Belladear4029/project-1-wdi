@@ -11,6 +11,7 @@ $(() => {
   const $targets = $('.targets');
   let $ballsArray = [];
 
+  const $comments = $('.comments');
   const $comment1 = $('#comment1');
   const $comment2 = $('#comment2');
   const $comment3 = $('#comment3');
@@ -61,6 +62,7 @@ $(() => {
     $submitName.remove();
     $input.remove();
     $scoreboard.show();
+    $comments.show();
     $targets.show();
     $name.html($input.val());
   });
@@ -95,31 +97,39 @@ $(() => {
       $ballsArray[i].offset().top + $ballsArray[i].height()/3 > target.offset().top &&
       $ballsArray[i].offset().left < target.offset().left + target.width()/3 &&
       $ballsArray[i].offset().left + $ballsArray[i].width()/3 > target.offset().left) {
-        increaseScoreBy3();
-        console.log('Perfect!');
+        increaseScoreBy(3);
+        target.css('border', '5px solid #f5f3ce');
         setTimeout(function(){
-          comment.text('Perfect!');
+          target.css('border', '4px solid #fff');
+        }, 500);
+        comment.text('Perfect!');
+        setTimeout(function(){
           comment.fadeOut();
         }, 1000);
-      }
-      if ($ballsArray[i].offset().top < target.offset().top + target.height()/2 &&
+      } else if ($ballsArray[i].offset().top < target.offset().top + target.height()/2 &&
       $ballsArray[i].offset().top + $ballsArray[i].height()/2 > target.offset().top &&
       $ballsArray[i].offset().left < target.offset().left + target.width()/2 &&
       $ballsArray[i].offset().left + $ballsArray[i].width()/2 > target.offset().left) {
-        increaseScoreBy2();
-        console.log('Good!');
+        increaseScoreBy(2);
+        target.css('border', '5px solid #f5f3ce');
         setTimeout(function(){
-          comment.text('Good!');
+          target.css('border', '4px solid #fff');
+        }, 500);
+        comment.text('Good!');
+        setTimeout(function(){
           comment.fadeOut();
         }, 1000);
       } else if ($ballsArray[i].offset().top < target.offset().top + target.height() &&
       $ballsArray[i].offset().top + $ballsArray[i].height() > target.offset().top &&
       $ballsArray[i].offset().left < target.offset().left + target.width() &&
       $ballsArray[i].offset().left + $ballsArray[i].width() > target.offset().left){
-        increaseScoreBy1();
-        console.log('Ok!');
+        increaseScoreBy(1);
+        target.css('border', '5px solid #f5f3ce');
         setTimeout(function(){
-          comment.text('Ok!');
+          target.css('border', '4px solid #fff');
+        }, 500);
+        comment.text('Ok!');
+        setTimeout(function(){
           comment.fadeOut();
         }, 1000);
       }
@@ -152,7 +162,8 @@ $(() => {
   });
 
   //INTERVALS
-  function doStuff(timings, target, duration) {
+
+  function ballIntervals(timings, target, duration) {
     setInterval(function(){
       for (let i = 0; i < timings.length; i++) {
         setTimeout(function(){
@@ -163,59 +174,17 @@ $(() => {
   }
 
   $submitKeys.on('click', function() {
-    doStuff(timings1, $target1, 7252.74725);
+    ballIntervals(timings1, $target1, 7252.74725);
+    ballIntervals(timings2, $target2, 7252.74725);
+    ballIntervals(timings3, $target3, 7252.74725);
+    ballIntervals(timings4, $target4, 7252.74725);
   });
 
 
-  $submitKeys.on('click', function(){
-    setInterval(function(){
-      for (let i = 0; i < timings1.length; i++) {
-        setTimeout(function(){
-          fireBall($target1);
-        }, timings1[i]);
-      }
-    }, 7252.74725);
+  //SCORE
 
-    setInterval(function(){
-      for (let i = 0; i < timings2.length; i++) {
-        setTimeout(function(){
-          fireBall($target2);
-        }, timings2[i]);
-      }
-    }, 7252.74725);
-
-    setInterval(function(){
-      for (let i = 0; i < timings3.length; i++) {
-        setTimeout(function(){
-          fireBall($target3);
-        }, timings3[i]);
-      }
-    }, 7252.74725);
-
-    setInterval(function(){
-      for (let i = 0; i < timings4.length; i++) {
-        setTimeout(function(){
-          fireBall($target4);
-        }, timings4[i]);
-      }
-    }, 7252.74725);
-  });
-
-
-  //SCORES
-
-  function increaseScoreBy1(){
-    score++;
-    $score.text(score);
-  }
-
-  function increaseScoreBy2(){
-    score += 2;
-    $score.text(score);
-  }
-
-  function increaseScoreBy3(){
-    score += 3;
+  function increaseScoreBy(number){
+    score += number;
     $score.text(score);
   }
 
