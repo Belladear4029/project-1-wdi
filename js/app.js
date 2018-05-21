@@ -11,6 +11,12 @@ $(() => {
   const $targets = $('.targets');
   const $ballsArray = [];
 
+  const $comments = $('.comments');
+  const $comment1 = $('#comment1');
+  const $comment2 = $('#comment2');
+  const $comment3 = $('#comment3');
+  const $comment4 = $('#comment4');
+
   const $submitName = $('#submitName');
   const $input = $('#name-input');
   const $name = $('#name');
@@ -20,40 +26,47 @@ $(() => {
   const $key3 = $('#key3');
   const $key4 = $('#key4');
   const $submitKeys = $('#submitKeys');
+  const $audio = $('#audio');
   const $scoreboard = $('.scoreboard');
   const $score = $('.score');
   let score = 0;
 
 
+  //AUDIO
+  function sound(){
+    $audio.src = './Red_Hot_Chili_Peppers _Cant Stop.mp3';
+    $audio.play();
+  }
 
-  //enter name
-  //
-  // $targets.hide();
-  // $scoreboard.hide();
-  // $chooseKeys.hide();
-  // $submitKeys.hide();
-  //
-  // $submitName.on('click', function(){
-  //   $chooseKeys.show();
-  //   $submitKeys.show();
-  //   $submitName.hide();
-  //   $input.hide();
-  // });
+  //ENTER NAME
 
-  //enter keys
+  $targets.hide();
+  $scoreboard.hide();
+  $chooseKeys.hide();
+  $submitKeys.hide();
 
-  // $submitKeys.on('click', function(){
-  //   $chooseKeys.hide();
-  //   $submitKeys.hide();
-  //   $submitKeys.hide();
-  //   $scoreboard.show();
-  //   $targets.show();
-  //   $submitName.hide();
-  //   $input.hide();
-  //   $name.html($input.val());
-  // });
+  $submitName.on('click', function(){
+    $chooseKeys.show();
+    $submitKeys.show();
+    $submitName.hide();
+    $input.hide();
+  });
 
-  //fireball function
+  //START GAME
+
+  $submitKeys.on('click', function(){
+    // sound();
+    $chooseKeys.hide();
+    $submitKeys.hide();
+    $submitKeys.hide();
+    $scoreboard.show();
+    $targets.show();
+    $submitName.hide();
+    $input.hide();
+    $name.html($input.val());
+  });
+
+  //FIREBALL
 
   function fireBall(target){
     const $ball = $('<div></div>');
@@ -72,45 +85,65 @@ $(() => {
     }, 5);
   }
 
+  //COLLISION DETECTION
 
-  //function check for collision
-
-  function collisionDetection(target){
+  function collisionDetection(target, comment){
     for (let i = 0; i < $ballsArray.length; i++){
+      if ($ballsArray[i].offset().top < target.offset().top + target.height()/3 &&
+      $ballsArray[i].offset().top + $ballsArray[i].height()/3 > target.offset().top &&
+      $ballsArray[i].offset().left < target.offset().left + target.width()/3 &&
+      $ballsArray[i].offset().left + $ballsArray[i].width()/3 > target.offset().left) {
+        increaseScoreBy3();
+        console.log('Perfect!');
+        setTimeout(function(){
+          comment.text('Perfect!');
+          comment.fadeOut();
+        }, 1000);
+      }
       if ($ballsArray[i].offset().top < target.offset().top + target.height()/2 &&
       $ballsArray[i].offset().top + $ballsArray[i].height()/2 > target.offset().top &&
       $ballsArray[i].offset().left < target.offset().left + target.width()/2 &&
       $ballsArray[i].offset().left + $ballsArray[i].width()/2 > target.offset().left) {
         increaseScoreBy2();
-        console.log('Perfect!');
+        console.log('Good!');
+        setTimeout(function(){
+          comment.text('Good!');
+          comment.fadeOut();
+        }, 1000);
       } else if ($ballsArray[i].offset().top < target.offset().top + target.height() &&
       $ballsArray[i].offset().top + $ballsArray[i].height() > target.offset().top &&
       $ballsArray[i].offset().left < target.offset().left + target.width() &&
       $ballsArray[i].offset().left + $ballsArray[i].width() > target.offset().left){
         increaseScoreBy1();
-        console.log('Good!');
+        console.log('Ok!');
+        setTimeout(function(){
+          comment.text('Ok!');
+          comment.fadeOut();
+        }, 1000);
       }
     }
   }
 
+  //KEYDOWN COLLISION MATCH
+
   $(document).on('keydown', function(e){
     switch(e.which){
       case 65:
-        collisionDetection($target1);
+        collisionDetection($target1, $comment1);
         break;
       case 83:
-        collisionDetection($target2);
+        collisionDetection($target2, $comment2);
         break;
       case 68:
-        collisionDetection($target3);
+        collisionDetection($target3, $comment3);
         break;
       case 70:
-        collisionDetection($target4);
+        collisionDetection($target4, $comment4);
     }
   });
 
+  //INTERVALS
 
-  //intervals
   $submitKeys.on('click', function(){
     setInterval(function(){
       for (let i = 0; i < timings1.length; i++) {
@@ -146,7 +179,7 @@ $(() => {
   });
 
 
-  //function scoreIncrease
+  //SCORES
 
   function increaseScoreBy1(){
     score++;
@@ -158,6 +191,9 @@ $(() => {
     $score.text(score);
   }
 
-  //function centre collision
+  function increaseScoreBy3(){
+    score += 3;
+    $score.text(score);
+  }
 
 });
