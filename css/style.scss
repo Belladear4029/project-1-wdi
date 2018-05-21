@@ -1,19 +1,115 @@
+body {
+  background-image: url(https://highonscore.com/wp-content/uploads/2017/05/Concert-Live-Music-l1.jpg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  font-family: 'Tajawal', 'san-serif';
+}
+
+header {
+  display: flex;
+  align-items: space-between;
+  #name {
+    width: 100%;
+    text-align: center;
+    font-size: 40px;
+    color: #fff;
+    margin: 10px auto;
+  }
+  .scoreboard {
+    font-size: 40px;
+    color: #fff;
+  }
+}
+
+.comments {
+  display: flex;
+  justify-content: space-around;
+  font-size: 40px;
+  color: #fff;
+}
+
+.enter-name {
+  margin-top: 200px;
+  width: 100%;
+  text-align: center;
+  input {
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Tajawal', 'san-serif';
+    font-size: 20px;
+    text-align: center;
+  }
+  #name-input {
+    width: 200px;
+    border: 4px solid #fff;
+    color: #fff;
+    background-color: rgba(0, 49, 82, 0.7);
+    margin: 0 auto;
+  }
+  #go {
+    width: 100px;
+    color: #000;
+    background-color: #fff;
+    border: 4px solid rgba(0, 49, 82, 1);
+    font-weight: bold;
+  }
+}
+
+.choose-keys {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  p {
+    font-size: 30px;
+    color: #fff;
+  }
+  input {
+    height: 50px;
+    width: 50px;
+    margin-left: 15px;
+    color: #fff;
+    font-size: 30px;
+    background-color: rgba(0, 49, 82, 0.7);
+    border: 4px solid #fff;
+    border-radius: 10px;
+    text-align: center;
+    text-transform: capitalize;
+  }
+  #play {
+    height: 50px;
+    width: 100px;
+    color: #000;
+    background-color: #fff;
+    border: 4px solid rgba(0, 49, 82, 1);
+    border-radius: 10px;
+    font-family: 'Tajawal', 'san-serif';
+    font-size: 20px;
+    font-weight: bold;
+    }
+  }
+
+
+
 .targets {
   display: flex;
   justify-content: space-around;
-  margin-top: 30px;
+  margin-top: 10px;
+  background-color: rgba(50, 50, 50, 0.3);
+  height: 70px;
   div {
-    border: 1px solid black;
+    border: 3px solid #FFF;
     height: 50px;
     width: 50px;
     border-radius: 50%;
+    margin-top: 7px;
   }
 }
 
 .balls {
   position: fixed;
   bottom: 0;
-  border: 1px solid black;
+  border: 2px solid black;
+  background-color: rgba(0, 49, 82, 0.5);
   height: 50px;
   width: 50px;
   border-radius: 50%;

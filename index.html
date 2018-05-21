@@ -5,23 +5,17 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="./js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./css/main.css">
+    <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
     <title></title>
   </head>
   <body>
     <audio id="audio" src="./Red_Hot_Chili_Peppers _Cant Stop.mp3"></audio>
-    <div id="name"></div>
-    <div class="scoreboard">
-      Score: <span class="score">0</span>
-    </div>
-    <input type="text" name="name" value="" id="name-input">
-    <input type="submit" id="submitName">
-    <div class="choose-keys">
-      <input type="text" name="key-input" value="" id="key1">
-      <input type="text" name="key-input" value="" id="key2">
-      <input type="text" name="key-input" value="" id="key3">
-      <input type="text" name="key-input" value="" id="key4">
-      <input type="submit" id="submitKeys">
-    </div>
+    <header>
+      <div class="scoreboard">
+        Score: <span class="score">0</span>
+      </div>
+      <div id="name"></div>
+    </header>
     <section class="comments">
       <div id="comment1"></div>
       <div id="comment2"></div>
@@ -34,5 +28,17 @@
       <div id="3"></div>
       <div id="4"></div>
     </section>
+    <div class="enter-name">
+      <input type="text" name="name" placeholder="Name" id="name-input">
+      <input type="submit" value="Go" id="go">
+    </div>
+    <div class="choose-keys">
+      <p>Enter the keys you would like to use</p>
+      <input type="text" name="key-input" value="" id="key1">
+      <input type="text" name="key-input" value="" id="key2">
+      <input type="text" name="key-input" value="" id="key3">
+      <input type="text" name="key-input" value="" id="key4">
+      <input type="submit" value="PLAY" id="play">
+    </div>
   </body>
 </html>

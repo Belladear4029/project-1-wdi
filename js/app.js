@@ -9,15 +9,14 @@ $(() => {
   const $target3 = $('#3');
   const $target4 = $('#4');
   const $targets = $('.targets');
-  const $ballsArray = [];
+  let $ballsArray = [];
 
-  const $comments = $('.comments');
   const $comment1 = $('#comment1');
   const $comment2 = $('#comment2');
   const $comment3 = $('#comment3');
   const $comment4 = $('#comment4');
 
-  const $submitName = $('#submitName');
+  const $submitName = $('#go');
   const $input = $('#name-input');
   const $name = $('#name');
   const $chooseKeys = $('.choose-keys');
@@ -25,7 +24,7 @@ $(() => {
   const $key2 = $('#key2');
   const $key3 = $('#key3');
   const $key4 = $('#key4');
-  const $submitKeys = $('#submitKeys');
+  const $submitKeys = $('#play');
   const $audio = $('#audio');
   const $scoreboard = $('.scoreboard');
   const $score = $('.score');
@@ -35,7 +34,7 @@ $(() => {
   //AUDIO
   function sound(){
     $audio.src = './Red_Hot_Chili_Peppers _Cant Stop.mp3';
-    $audio.play();
+    $audio.get(0).play();
   }
 
   //ENTER NAME
@@ -48,28 +47,28 @@ $(() => {
   $submitName.on('click', function(){
     $chooseKeys.show();
     $submitKeys.show();
-    $submitName.hide();
-    $input.hide();
+    $submitName.remove();
+    $input.remove();
   });
 
   //START GAME
 
   $submitKeys.on('click', function(){
-    // sound();
-    $chooseKeys.hide();
-    $submitKeys.hide();
-    $submitKeys.hide();
+    sound();
+    $chooseKeys.remove();
+    $submitKeys.remove();
+    $submitKeys.remove();
+    $submitName.remove();
+    $input.remove();
     $scoreboard.show();
     $targets.show();
-    $submitName.hide();
-    $input.hide();
     $name.html($input.val());
   });
 
   //FIREBALL
 
   function fireBall(target){
-    const $ball = $('<div></div>');
+    const $ball = $('<div>');
     $ball.addClass('balls');
     $ball.appendTo('.targets');
     $ball.css('left', `${target.position().left}px`);
@@ -79,7 +78,10 @@ $(() => {
       $ball.css('top', '-=1px');
 
       if ($ball.position().top + $ball.height() === 0) {
-        $ballsArray.shift();
+        $ball.remove();
+        $ballsArray = $ballsArray.filter(function(ball) {
+          return !(ball === $ball);
+        });
         clearInterval(intervalId);
       }
     }, 5);
@@ -124,25 +126,46 @@ $(() => {
     }
   }
 
+  //GET KEYCODE
+
+  function getKeyValue(key){
+    return key.val().toUpperCase().charCodeAt(0);
+  }
+
   //KEYDOWN COLLISION MATCH
 
   $(document).on('keydown', function(e){
+    console.log($key1.val().toUpperCase().charCodeAt(0), e.which);
     switch(e.which){
-      case 65:
+      case getKeyValue($key1):
         collisionDetection($target1, $comment1);
         break;
-      case 83:
+      case getKeyValue($key2):
         collisionDetection($target2, $comment2);
         break;
-      case 68:
+      case getKeyValue($key3):
         collisionDetection($target3, $comment3);
         break;
-      case 70:
+      case getKeyValue($key4):
         collisionDetection($target4, $comment4);
     }
   });
 
   //INTERVALS
+  function doStuff(timings, target, duration) {
+    setInterval(function(){
+      for (let i = 0; i < timings.length; i++) {
+        setTimeout(function(){
+          fireBall(target);
+        }, timings[i]);
+      }
+    }, duration);
+  }
+
+  $submitKeys.on('click', function() {
+    doStuff(timings1, $target1, 7252.74725);
+  });
+
 
   $submitKeys.on('click', function(){
     setInterval(function(){
