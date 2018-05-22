@@ -33,6 +33,7 @@ $(() => {
 
 
   //AUDIO
+
   function sound(){
     $audio.src = './Red_Hot_Chili_Peppers _Cant Stop.mp3';
     $audio.get(0).play();
@@ -44,12 +45,26 @@ $(() => {
   $scoreboard.hide();
   $chooseKeys.hide();
   $submitKeys.hide();
+  $input.focus();
 
   $submitName.on('click', function(){
     $chooseKeys.show();
+    $key1.focus();
     $submitKeys.show();
     $submitName.remove();
     $input.remove();
+  });
+
+  // $key1.keydown(function(){
+  //   if($key1.val().length === this.maxlength) {
+  //     $key2.focus();
+  //   }
+  // });
+
+  $input.keydown(function(e){
+    if(e.keyCode === 13){
+      $submitName.click();
+    }
   });
 
   //START GAME
@@ -67,6 +82,12 @@ $(() => {
     $name.html($input.val());
   });
 
+  $chooseKeys.keydown(function(e){
+    if(e.keyCode === 13){
+      $submitKeys.click();
+    }
+  });
+
   //FIREBALL
 
   function fireBall(target){
@@ -80,6 +101,7 @@ $(() => {
       $ball.css('top', '-=1px');
 
       if ($ball.position().top + $ball.height() === 0) {
+        increaseScoreBy(-1);
         $ball.remove();
         $ballsArray = $ballsArray.filter(function(ball) {
           return !(ball === $ball);
@@ -98,9 +120,10 @@ $(() => {
       $ballsArray[i].offset().left < target.offset().left + target.width()/3 &&
       $ballsArray[i].offset().left + $ballsArray[i].width()/3 > target.offset().left) {
         increaseScoreBy(3);
-        target.css('border', '5px solid #f5f3ce');
+        $ballsArray[i].remove();
+        target.css('box-shadow', '0 0 20px #f5f3ce');
         setTimeout(function(){
-          target.css('border', '4px solid #fff');
+          target.css('box-shadow', 'none');
         }, 500);
         comment.text('Perfect!');
         setTimeout(function(){
@@ -111,9 +134,10 @@ $(() => {
       $ballsArray[i].offset().left < target.offset().left + target.width()/2 &&
       $ballsArray[i].offset().left + $ballsArray[i].width()/2 > target.offset().left) {
         increaseScoreBy(2);
-        target.css('border', '5px solid #f5f3ce');
+        $ballsArray[i].remove();
+        target.css('box-shadow', '0 0 10px #f5f3ce');
         setTimeout(function(){
-          target.css('border', '4px solid #fff');
+          target.css('box-shadow', 'none');
         }, 500);
         comment.text('Good!');
         setTimeout(function(){
@@ -124,9 +148,10 @@ $(() => {
       $ballsArray[i].offset().left < target.offset().left + target.width() &&
       $ballsArray[i].offset().left + $ballsArray[i].width() > target.offset().left){
         increaseScoreBy(1);
-        target.css('border', '5px solid #f5f3ce');
+        $ballsArray[i].remove();
+        target.css('box-shadow', '0 0 5px #f5f3ce');
         setTimeout(function(){
-          target.css('border', '4px solid #fff');
+          target.css('box-shadow', 'none');
         }, 500);
         comment.text('Ok!');
         setTimeout(function(){
@@ -187,5 +212,9 @@ $(() => {
     score += number;
     $score.text(score);
   }
+
+  //2 PLAYER
+
+
 
 });
