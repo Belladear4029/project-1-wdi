@@ -11,8 +11,13 @@
   <body>
     <audio id="audio" src="./Red_Hot_Chili_Peppers _Cant Stop.mp3"></audio>
     <header>
-      <div class="scoreboard">
-        Score: <span class="score">0</span>
+      <div class="scoreboards">
+        <div class="scoreboard">
+          Score: <span class="score1">0</span>
+        </div>
+        <div class="scoreboard2">
+          Score: <span class="score2">0</span>
+        </div>
       </div>
       <section class="player-names">
         <div id="name"></div>
@@ -22,6 +27,20 @@
     <section class="buttons">
       <button type="button" name="" id="player-1">1 Player</button>
       <button type="button" name="" id="player-2">2 Player</button>
+    </section>
+    <section class="one-and-two-comments">
+      <section class="comments">
+        <div id="comment1">hey</div>
+        <div id="comment2">hey</div>
+        <div id="comment3">hey</div>
+        <div id="comment4">hey</div>
+      </section>
+      <section class="two-comments">
+        <div id="comment5"></div>
+        <div id="comment6"></div>
+        <div id="comment7"></div>
+        <div id="comment8"></div>
+      </section>
     </section>
     <section class="one-and-two-targets">
       <section class="targets">
@@ -37,20 +56,6 @@
         <div id="8"></div>
       </section>
     </section>
-    <section class="one-and-two-comments">
-      <section class="comments">
-        <div id="comment1"></div>
-        <div id="comment2"></div>
-        <div id="comment3"></div>
-        <div id="comment4"></div>
-      </section>
-      <section class="two-comments">
-        <div id="comment5"></div>
-        <div id="comment6"></div>
-        <div id="comment7"></div>
-        <div id="comment8"></div>
-      </section>
-    </section>
     <div class="enter-name">
       <input type="text" name="name" placeholder="Name" id="name-input">
       <input type="submit" value="Go" id="go">
@@ -63,18 +68,18 @@
       <p>Enter the keys you would like to use</p>
       <div class="player-1-keys">
         <p id="player-1-name"></p>
-        <input type="text" name="key-input" maxlength="1" id="key1">
-        <input type="text" name="key-input" maxlength="1" id="key2">
-        <input type="text" name="key-input" maxlength="1" id="key3">
-        <input type="text" name="key-input" maxlength="1" id="key4">
+        <input type="text" maxlength="1" class="key-inputs" id="key1">
+        <input type="text" maxlength="1" class="key-inputs" id="key2">
+        <input type="text" maxlength="1" class="key-inputs" id="key3">
+        <input type="text" maxlength="1" class="key-inputs" id="key4">
         <input type="submit" value="PLAY" id="play">
       </div>
       <div class="player-2-keys">
         <p id="player-2-name"></p>
-        <input type="text" name="key-input" maxlength="1" id="key5">
-        <input type="text" name="key-input" maxlength="1" id="key6">
-        <input type="text" name="key-input" maxlength="1" id="key7">
-        <input type="text" name="key-input" maxlength="1" id="key8">
+        <input type="text" maxlength="1" class="key-inputs" id="key5">
+        <input type="text" maxlength="1" class="key-inputs" id="key6">
+        <input type="text" maxlength="1" class="key-inputs" id="key7">
+        <input type="text" maxlength="1" class="key-inputs" id="key8">
         <br>
         <input type="submit" value="PLAY" id="play-2">
       </div>
