@@ -8,12 +8,16 @@ body {
 header {
   display: flex;
   align-items: space-between;
-  #name {
-    width: 100%;
-    text-align: center;
-    font-size: 40px;
-    color: #fff;
-    margin: 10px auto;
+  .player-names {
+    display: flex;
+    justify-content: space-around;
+    #name {
+      width: 100%;
+      text-align: center;
+      font-size: 40px;
+      color: #fff;
+      margin: 10px auto;
+    }
   }
   .scoreboard {
     font-size: 40px;
@@ -21,7 +25,7 @@ header {
   }
 }
 
-.comments {
+.one-and-two-comments {
   display: flex;
   justify-content: space-around;
   font-size: 40px;
@@ -47,6 +51,33 @@ header {
     margin: 0 auto;
   }
   #go {
+    width: 100px;
+    color: #000;
+    background-color: #fff;
+    border: 4px solid rgba(0, 49, 82, 1);
+    font-weight: bold;
+  }
+}
+
+.enter-name-2 {
+  margin-top: 200px;
+  width: 100%;
+  text-align: center;
+  input {
+    height: 50px;
+    border-radius: 10px;
+    font-family: 'Tajawal', 'san-serif';
+    font-size: 20px;
+    text-align: center;
+  }
+  #name-input-2 {
+    width: 200px;
+    border: 4px solid #fff;
+    color: #fff;
+    background-color: rgba(0, 49, 82, 0.7);
+    margin: 0 auto;
+  }
+  #go-2 {
     width: 100px;
     color: #000;
     background-color: #fff;
@@ -88,22 +119,41 @@ header {
     }
   }
 
-
-
-.targets {
+.one-and-two-targets {
   display: flex;
   justify-content: space-around;
-  margin-top: 10px;
-  background-color: rgba(50, 50, 50, 0.3);
-  height: 70px;
-  div {
-    border: 3px solid #FFF;
-    height: 50px;
-    width: 50px;
-    border-radius: 50%;
-    margin-top: 7px;
+  .targets {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    background-color: rgba(50, 50, 50, 0.3);
+    height: 70px;
+    div {
+      margin: auto 40px;
+      border: 3px solid #FFF;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
+  }
+  .two-targets {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 10px;
+    background-color: rgba(50, 50, 50, 0.3);
+    height: 70px;
+    div {
+      margin: auto 40px;
+      border: 3px solid #FFF;
+      height: 50px;
+      width: 50px;
+      border-radius: 50%;
+      margin-top: 7px;
+    }
   }
 }
+
 
 .balls {
   position: fixed;

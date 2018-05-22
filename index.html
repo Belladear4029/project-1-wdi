@@ -14,33 +14,70 @@
       <div class="scoreboard">
         Score: <span class="score">0</span>
       </div>
-      <div id="name"></div>
+      <section class="player-names">
+        <div id="name"></div>
+        <div id="name-2"></div>
+      </section>
     </header>
-    <button type="button" name="1 Player"></button>
-    <button type="button" name="2 Player"></button>
-    <section class="targets">
-      <div id="1"></div>
-      <div id="2"></div>
-      <div id="3"></div>
-      <div id="4"></div>
+    <section class="buttons">
+      <button type="button" name="" id="player-1">1 Player</button>
+      <button type="button" name="" id="player-2">2 Player</button>
     </section>
-    <section class="comments">
-      <div id="comment1"></div>
-      <div id="comment2"></div>
-      <div id="comment3"></div>
-      <div id="comment4"></div>
+    <section class="one-and-two-targets">
+      <section class="targets">
+        <div id="1"></div>
+        <div id="2"></div>
+        <div id="3"></div>
+        <div id="4"></div>
+      </section>
+      <section class="two-targets">
+        <div id="5"></div>
+        <div id="6"></div>
+        <div id="7"></div>
+        <div id="8"></div>
+      </section>
+    </section>
+    <section class="one-and-two-comments">
+      <section class="comments">
+        <div id="comment1"></div>
+        <div id="comment2"></div>
+        <div id="comment3"></div>
+        <div id="comment4"></div>
+      </section>
+      <section class="two-comments">
+        <div id="comment5"></div>
+        <div id="comment6"></div>
+        <div id="comment7"></div>
+        <div id="comment8"></div>
+      </section>
     </section>
     <div class="enter-name">
       <input type="text" name="name" placeholder="Name" id="name-input">
       <input type="submit" value="Go" id="go">
     </div>
+    <div class="enter-name-2">
+      <input type="text" name="name" placeholder="Name" id="name-input-2">
+      <input type="submit" value="Go" id="go-2">
+    </div>
     <div class="choose-keys">
       <p>Enter the keys you would like to use</p>
-      <input type="text" name="key-input" maxlength="1" id="key1">
-      <input type="text" name="key-input" maxlength="1" id="key2">
-      <input type="text" name="key-input" maxlength="1" id="key3">
-      <input type="text" name="key-input" maxlength="1" id="key4">
-      <input type="submit" value="PLAY" id="play">
+      <div class="player-1-keys">
+        <p id="player-1-name"></p>
+        <input type="text" name="key-input" maxlength="1" id="key1">
+        <input type="text" name="key-input" maxlength="1" id="key2">
+        <input type="text" name="key-input" maxlength="1" id="key3">
+        <input type="text" name="key-input" maxlength="1" id="key4">
+        <input type="submit" value="PLAY" id="play">
+      </div>
+      <div class="player-2-keys">
+        <p id="player-2-name"></p>
+        <input type="text" name="key-input" maxlength="1" id="key5">
+        <input type="text" name="key-input" maxlength="1" id="key6">
+        <input type="text" name="key-input" maxlength="1" id="key7">
+        <input type="text" name="key-input" maxlength="1" id="key8">
+        <br>
+        <input type="submit" value="PLAY" id="play-2">
+      </div>
     </div>
   </body>
 </html>

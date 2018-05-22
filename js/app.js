@@ -9,7 +9,20 @@ $(() => {
   const $target3 = $('#3');
   const $target4 = $('#4');
   const $targets = $('.targets');
+
+  const $target5 = $('#5');
+  const $target6 = $('#6');
+  const $target7 = $('#7');
+  const $target8 = $('#8');
+  const $2PTargets = $('.two-targets');
+
+  const $1and2PTargets = $('.one-and-two-targets');
+
   let $ballsArray = [];
+
+  const $buttons = $('.buttons');
+  const $1playerButton = $('#player-1');
+  const $2playerButton = $('#player-2');
 
   const $comments = $('.comments');
   const $comment1 = $('#comment1');
@@ -17,15 +30,37 @@ $(() => {
   const $comment3 = $('#comment3');
   const $comment4 = $('#comment4');
 
-  const $submitName = $('#go');
+  const $comment5 = $('#comment5');
+  const $comment6 = $('#comment6');
+  const $comment7 = $('#comment7');
+  const $comment8 = $('#comment8');
+
+  const $1and2PComments = $('.one-and-two-comments');
+
+  const $enterName = $('.enter-name');
+  const $enterName2 = $('.enter-name-2');
   const $input = $('#name-input');
-  const $name = $('#name');
+  const $input2 = $('#name-input-2');
+  const $submitName = $('#go');
+  const $submitName2 = $('#go-2');
+  const $player1Name = $('#player-1-name');
+  const $player2Name = $('#player-2-name');
+  const $displayName = $('#name');
+  const $displayName2 = $('#name-2');
+
   const $chooseKeys = $('.choose-keys');
+  const $1PKeys = $('.player-1-keys');
+  const $2PKeys = $('.player-2-keys');
   const $key1 = $('#key1');
   const $key2 = $('#key2');
   const $key3 = $('#key3');
   const $key4 = $('#key4');
+  const $key5 = $('#key5');
+  const $key6 = $('#key6');
+  const $key7 = $('#key7');
+  const $key8 = $('#key8');
   const $submitKeys = $('#play');
+  const $submitKeys2 = $('#play-2');
   const $audio = $('#audio');
   const $scoreboard = $('.scoreboard');
   const $score = $('.score');
@@ -39,20 +74,31 @@ $(() => {
     $audio.get(0).play();
   }
 
-  //ENTER NAME
+  //1 or 2 PLAYER
 
-  $targets.hide();
+  $buttons.show();
+  $1and2PTargets.hide();
   $scoreboard.hide();
   $chooseKeys.hide();
-  $submitKeys.hide();
-  $input.focus();
+  $enterName.hide();
+  $enterName2.hide();
+
+  //1 PLAYER
+
+  $1playerButton.on('click', function(){
+    $enterName.show();
+    $input.show().focus();
+    $buttons.remove();
+  });
+
+  //ENTER NAME
 
   $submitName.on('click', function(){
     $chooseKeys.show();
+    $2PKeys.hide();
+    $player1Name.text($input.val());
     $key1.focus();
-    $submitKeys.show();
-    $submitName.remove();
-    $input.remove();
+    $enterName.remove();
   });
 
   // $key1.keydown(function(){
@@ -72,14 +118,10 @@ $(() => {
   $submitKeys.on('click', function(){
     sound();
     $chooseKeys.remove();
-    $submitKeys.remove();
-    $submitKeys.remove();
-    $submitName.remove();
-    $input.remove();
+    $1and2PTargets.show();
+    $2PTargets.hide();
     $scoreboard.show();
-    $comments.show();
-    $targets.show();
-    $name.html($input.val());
+    $displayName.html($input.val());
   });
 
   $chooseKeys.keydown(function(e){
@@ -170,7 +212,6 @@ $(() => {
   //KEYDOWN COLLISION MATCH
 
   $(document).on('keydown', function(e){
-    console.log($key1.val().toUpperCase().charCodeAt(0), e.which);
     switch(e.which){
       case getKeyValue($key1):
         collisionDetection($target1, $comment1);
@@ -183,6 +224,18 @@ $(() => {
         break;
       case getKeyValue($key4):
         collisionDetection($target4, $comment4);
+        break;
+      case getKeyValue($key5):
+        collisionDetection($target5, $comment5);
+        break;
+      case getKeyValue($key6):
+        collisionDetection($target6, $comment6);
+        break;
+      case getKeyValue($key7):
+        collisionDetection($target7, $comment7);
+        break;
+      case getKeyValue($key8):
+        collisionDetection($target8, $comment8);
     }
   });
 
@@ -215,6 +268,44 @@ $(() => {
 
   //2 PLAYER
 
+  $2playerButton.on('click', function(){
+
+    $buttons.remove();
+    $enterName.show();
+    $input.focus();
+
+    $submitName.on('click', function(){
+      $input2.show().focus();
+      $enterName2.show();
+      $chooseKeys.hide();
+
+      $submitName2.on('click', function(){
+        $chooseKeys.show();
+        $submitKeys.hide();
+        $2PKeys.show();
+        $enterName2.remove();
+        $player1Name.text($input.val());
+        $player2Name.text($input2.val());
+      });
+    });
+  });
+
+  $submitKeys2.on('click', function(){
+    $chooseKeys.remove();
+    $1and2PTargets.show();
+    $1and2PComments.show();
+    $displayName.text($input.val());
+    $displayName2.text($input2.val());
+
+    ballIntervals(timings1, $target1, 7252.74725);
+    ballIntervals(timings2, $target2, 7252.74725);
+    ballIntervals(timings3, $target3, 7252.74725);
+    ballIntervals(timings4, $target4, 7252.74725);
+    ballIntervals(timings1, $target5, 7252.74725);
+    ballIntervals(timings2, $target6, 7252.74725);
+    ballIntervals(timings3, $target7, 7252.74725);
+    ballIntervals(timings4, $target8, 7252.74725);
+  });
 
 
 });
