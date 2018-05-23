@@ -1,3 +1,7 @@
+* {
+  box-sizing: border-box;
+}
+
 body {
   background-image: url(https://highonscore.com/wp-content/uploads/2017/05/Concert-Live-Music-l1.jpg);
   background-size: cover;
@@ -27,7 +31,8 @@ header {
 .buttons {
   width: 100%;
   text-align: center;
-  margin-top: 200px;
+  position: absolute;
+  top: 200px;
   button {
     height: 50px;
     width: 200px;
@@ -39,41 +44,29 @@ header {
     background-color: #fff;
     border: 4px solid rgba(0, 49, 82, .8);
     font-weight: bold;
-  }
-}
-
-.one-and-two-comments {
-  display: flex;
-  justify-content: space-around;
-  font-size: 20px;
-  color: #fff;
-  .comments {
-    display: flex;
-    justify-content: space-around;
-  }
-  .two-comments {
-    display: flex;
-    justify-content: space-around;
+    line-height: 50px;
   }
 }
 
 .enter-name {
-  margin-top: 200px;
+  margin-top: 150px;
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   input {
     height: 50px;
     border-radius: 10px;
     font-family: 'Tajawal', 'san-serif';
     font-size: 20px;
     text-align: center;
+    margin: 0px 20px;
   }
   #name-input {
     width: 200px;
+    height: 50px;
     border: 4px solid #fff;
     color: #fff;
     background-color: rgba(0, 49, 82, 0.7);
-    margin: 0 auto;
   }
   #go {
     width: 100px;
@@ -81,26 +74,29 @@ header {
     background-color: #fff;
     border: 4px solid rgba(0, 49, 82, .8);
     font-weight: bold;
+    line-height: 50px;
   }
 }
 
 .enter-name-2 {
-  margin-top: 200px;
+  margin-top: 150px;
   width: 100%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
   input {
     height: 50px;
     border-radius: 10px;
     font-family: 'Tajawal', 'san-serif';
     font-size: 20px;
     text-align: center;
+    margin: 0px 20px;
   }
   #name-input-2 {
     width: 200px;
+    height: 50px;
     border: 4px solid #fff;
     color: #fff;
-    background-color: rgba(0, 49, 82, .7);
-    margin: 0 auto;
+    background-color: rgba(0, 49, 82, 0.7);
   }
   #go-2 {
     width: 100px;
@@ -108,6 +104,7 @@ header {
     background-color: #fff;
     border: 4px solid rgba(0, 49, 82, .8);
     font-weight: bold;
+    line-height: 50px;
   }
 }
 
@@ -115,14 +112,25 @@ header {
   width: 100%;
   height: 100%;
   text-align: center;
+  .player-1-keys {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+  }
+  .player-2-keys {
+    display: flex;
+    justify-content: center;
+    height: 50px;
+    flex-wrap: wrap;
+  }
   p {
     font-size: 30px;
-    color: #fff;
+    color: rgba(0, 49, 82, 1);
   }
   input {
     height: 50px;
     width: 50px;
-    margin-left: 15px;
+    margin: auto 10px;
     color: #fff;
     font-size: 30px;
     background-color: rgba(0, 49, 82, .7);
@@ -131,7 +139,7 @@ header {
     text-align: center;
     text-transform: capitalize;
   }
-  #play {
+  .play {
     height: 50px;
     width: 100px;
     color: rgba(0, 49, 82, 1);
@@ -141,8 +149,34 @@ header {
     font-family: 'Tajawal', 'san-serif';
     font-size: 20px;
     font-weight: bold;
+    line-height: 50px;
     }
+  #play-2 {
+    margin-top: 30px;
   }
+  #player-2-name {
+    color: #fff;
+  }
+}
+
+.one-and-two-comments {
+  display: flex;
+  justify-content: space-around;
+  font-size: 20px;
+  color: #fff;
+  height: 30px;
+  .comments {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+    margin: 0 auto;
+  }
+  .two-comments {
+    width: 500px;
+    display: flex;
+    justify-content: space-around;
+  }
+}
 
 .one-and-two-targets {
   display: flex;
@@ -187,4 +221,14 @@ header {
   height: 50px;
   width: 50px;
   border-radius: 50%;
+}
+
+#winner {
+  font-size: 70px;
+  height: 100px;
+  color: #fff;
+  background-color: rgba(0, 49, 82, 0.5);
+  width: 100%;
+  text-align: center;
+  line-height: 120px;
 }

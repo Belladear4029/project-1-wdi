@@ -51,6 +51,7 @@ $(() => {
   const $chooseKeys = $('.choose-keys');
   const $2PKeys = $('.player-2-keys');
   const $keyInputs = $('.key-inputs');
+  const $keyInputs1 = $('.player-1-keys');
   const $key1 = $('#key1');
   const $key2 = $('#key2');
   const $key3 = $('#key3');
@@ -66,6 +67,7 @@ $(() => {
   const $scoreboard2 = $('.scoreboard2');
   const $score = $('.score1');
   const $score2 = $('.score2');
+  const $displayWinner = $('#winner');
   let score = 0;
   let score2 = 0;
 
@@ -84,6 +86,7 @@ $(() => {
   $chooseKeys.hide();
   $enterName.hide();
   $enterName2.hide();
+  $displayWinner.hide();
 
   //1 PLAYER
 
@@ -110,13 +113,12 @@ $(() => {
   });
 
   $keyInputs.keyup(function(){
-    console.log($(this).length);
     if($(this).val().length === 1){
       $(this).next().focus();
     }
   });
 
-  $keyInputs.keydown(function(e){
+  $keyInputs1.keydown(function(e){
     if(e.keyCode === 13){
       $submitKeys.click();
     }
@@ -234,13 +236,27 @@ $(() => {
   //INTERVALS
 
   function ballIntervals(timings, target, duration) {
-    setInterval(function(){
+    const runGame = setInterval(function(){
       for (let i = 0; i < timings.length; i++) {
         setTimeout(function(){
           fireBall(target);
         }, timings[i]);
       }
     }, duration);
+    //END GAME
+    setTimeout(function() {
+      clearInterval(runGame);
+      setTimeout(function(){
+        $displayWinner.show();
+        if (score > score2) {
+          $displayWinner.html(`${$input.val()} wins!`);
+        } else if (score2 > score) {
+          $displayWinner.html(`${$input2.val()} wins!`);
+        } else if (score === score2){
+          $displayWinner.html('It\'s a draw!');
+        }
+      }, 5000);
+    }, 20000);
   }
 
   $submitKeys.on('click', function() {
@@ -286,12 +302,19 @@ $(() => {
 
       });
 
-      $enterName2.keydown(function(e){
-        if(e.keyCode === 13){
-          $submitName2.click();
-        }
-      });
     });
+  });
+
+  $enterName2.keydown(function(e){
+    if(e.keyCode === 13){
+      $submitName2.click();
+    }
+  });
+
+  $keyInputs.keydown(function(e){
+    if(e.keyCode === 13){
+      $submitKeys2.click();
+    }
   });
 
   $submitKeys2.on('click', function(){
@@ -312,5 +335,6 @@ $(() => {
     ballIntervals(timings3, $target7, 7252.74725);
     ballIntervals(timings4, $target8, 7252.74725);
   });
+
 
 });
