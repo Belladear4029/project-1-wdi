@@ -6,19 +6,21 @@
     <script src="./js/app.js" charset="utf-8"></script>
     <link rel="stylesheet" href="./css/main.css">
     <link href="https://fonts.googleapis.com/css?family=Tajawal" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Pacifico" rel="stylesheet">
     <title></title>
   </head>
   <body>
     <audio id="audio" src="./Red_Hot_Chili_Peppers _Cant Stop.mp3"></audio>
     <header>
-      <div class="scoreboards">
+      <h1>TAP TAP</h1>
+      <section class="scoreboards">
         <div class="scoreboard">
           Score: <span class="score1">0</span>
         </div>
         <div class="scoreboard2">
           Score: <span class="score2">0</span>
         </div>
-      </div>
+      </section>
       <section class="player-names">
         <div id="name-1"></div>
         <div id="name-2"></div>
@@ -66,7 +68,7 @@
       <input type="text" placeholder="Name" class="name-input" id="name-input-2">
       <input type="submit" value="GO" class="go" id="go-2">
     </div>
-    <div class="choose-keys">
+    <section class="choose-keys">
       <p>Enter the keys you would like to use</p>
       <p id="player-1-name" class="player-names"></p>
       <div class="player-1-keys">
@@ -77,16 +79,18 @@
         <input type="submit" value="PLAY" class="play" id="play-1">
       </div>
       <p id="player-2-name" class="player-names"></p>
-      <div class="player-2-keys">
-        <input type="text" maxlength="1" class="key-inputs" id="key5">
-        <input type="text" maxlength="1" class="key-inputs" id="key6">
-        <input type="text" maxlength="1" class="key-inputs" id="key7">
-        <input type="text" maxlength="1" class="key-inputs" id="key8">
+      <div class="keys-and-button">
+        <div class="player-2-keys">
+          <input type="text" maxlength="1" class="key-inputs" id="key5">
+          <input type="text" maxlength="1" class="key-inputs" id="key6">
+          <input type="text" maxlength="1" class="key-inputs" id="key7">
+          <input type="text" maxlength="1" class="key-inputs" id="key8">
+        </div>
+        <div id="play-button">
+          <input type="submit" value="PLAY" class="play" id="play-2">
+        </div>
       </div>
-      <div id="play-button">
-        <input type="submit" value="PLAY" class="play" id="play-2">
-      </div>
-    </div>
+    </section>
     <p id='winner'></p>
   </body>
 </html>

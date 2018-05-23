@@ -6,6 +6,8 @@ $(() => {
   const timings3 = [3956.04396, 4615.38462, 5934.06593];
   const timings4 = [329.67033, 659.340659, 2637.36264, 5934.06593];
 
+  const $gameName = $('h1');
+
   const $target1 = $('#1');
   const $target2 = $('#2');
   const $target3 = $('#3');
@@ -25,11 +27,13 @@ $(() => {
   const $1playerButton = $('#player-1');
   const $2playerButton = $('#player-2');
 
+  const $player1Comments = $('.comments');
   const $comment1 = $('#comment1');
   const $comment2 = $('#comment2');
   const $comment3 = $('#comment3');
   const $comment4 = $('#comment4');
 
+  const $player2Comments = $('.two-comments');
   const $comment5 = $('#comment5');
   const $comment6 = $('#comment6');
   const $comment7 = $('#comment7');
@@ -62,6 +66,7 @@ $(() => {
   const $key8 = $('#key8');
   const $submitKeys = $('#play-1');
   const $submitKeys2 = $('#play-2');
+  const $keysAndButton = $('.keys-and-button');
   const $audio = $('#audio');
   const $scoreboards = $('.scoreboards');
   const $scoreboard2 = $('.scoreboard2');
@@ -94,6 +99,7 @@ $(() => {
     $enterName.show();
     $input.show().focus();
     $buttons.remove();
+    $gameName.remove();
   });
 
   //ENTER NAME
@@ -120,6 +126,12 @@ $(() => {
     }
   });
 
+  $keyInputs.keydown(function(e){
+    if (e.keyCode === 8) {
+      $(this).prev().focus();
+    }
+  });
+
   $keyInputs1.keydown(function(e){
     if(e.keyCode === 13){
       $submitKeys.click();
@@ -135,7 +147,10 @@ $(() => {
     $2PTargets.hide();
     $scoreboards.show();
     $scoreboard2.hide();
+    $player1Comments.show();
+    $player2Comments.hide();
     $displayName.html($input.val());
+    $displayName2.remove();
   });
 
   //FIREBALL
@@ -172,14 +187,14 @@ $(() => {
 
   //EFFECT OF COLLISION
 
-  function collisionEffect(ballNumber, target, playerNumber, score, commentElement){
+  function collisionEffect(ballNumber, target, playerNumber, score, commentElement, comment){
     increaseScoreBy(playerNumber, score);
     $ballsArray[ballNumber].remove();
     target.css('box-shadow', '0 0 20px #f5f3ce');
     setTimeout(function(){
       target.css('box-shadow', 'none');
     }, 500);
-    commentElement.text('Perfect!');
+    commentElement.text(comment);
     setTimeout(function(){
       commentElement.fadeOut();
     }, 1000);
@@ -190,11 +205,11 @@ $(() => {
   function detectCollision(target, commentElement, playerNumber){
     for (let i = 0; i < $ballsArray.length; i++){
       if (ballCollides(i, target, 3)) {
-        collisionEffect(i, target, playerNumber, 3, commentElement);
+        collisionEffect(i, target, playerNumber, 3, commentElement, 'Perfect!');
       } else if (ballCollides(i, target, 2)) {
-        collisionEffect(i, target, playerNumber, 2, commentElement);
+        collisionEffect(i, target, playerNumber, 2, commentElement, 'Good!');
       } else if (ballCollides(i, target, 1)){
-        collisionEffect(i, target, playerNumber, 1, commentElement);
+        collisionEffect(i, target, playerNumber, 1, commentElement, 'Ok!');
       }
     }
   }
@@ -250,15 +265,19 @@ $(() => {
       clearInterval(runGame);
       setTimeout(function(){
         $displayWinner.show();
-        if (score > score2) {
+        if (score2 === 0 && score > 100){
+          $displayWinner.html('Good job!');
+        } else if (score2 === 0 && score < 100){
+          $displayWinner.html('Better luck next time!');
+        } else if (score > score2) {
           $displayWinner.html(`${$input.val()} wins!`);
         } else if (score2 > score) {
           $displayWinner.html(`${$input2.val()} wins!`);
-        } else if (score === score2){
+        } else if (score === score2) {
           $displayWinner.html('It\'s a draw!');
         }
-      }, 5000);
-    }, 20000);
+      }, 8000);
+    }, 30000);
   }
 
   $submitKeys.on('click', function() {
@@ -315,7 +334,7 @@ $(() => {
     }
   });
 
-  $keyInputs.keydown(function(e){
+  $keysAndButton.keydown(function(e){
     if(e.keyCode === 13){
       $submitKeys2.click();
     }
