@@ -37,15 +37,15 @@ $(() => {
 
   const $1and2PComments = $('.one-and-two-comments');
 
-  const $enterName = $('.enter-name');
-  const $enterName2 = $('.enter-name-2');
-  const $input = $('#name-input');
+  const $enterName = $('#enter-name-1');
+  const $enterName2 = $('#enter-name-2');
+  const $input = $('#name-input-1');
   const $input2 = $('#name-input-2');
-  const $submitName = $('#go');
+  const $submitName = $('#go-1');
   const $submitName2 = $('#go-2');
   const $player1Name = $('#player-1-name');
   const $player2Name = $('#player-2-name');
-  const $displayName = $('#name');
+  const $displayName = $('#name-1');
   const $displayName2 = $('#name-2');
 
   const $chooseKeys = $('.choose-keys');
@@ -60,7 +60,7 @@ $(() => {
   const $key6 = $('#key6');
   const $key7 = $('#key7');
   const $key8 = $('#key8');
-  const $submitKeys = $('#play');
+  const $submitKeys = $('#play-1');
   const $submitKeys2 = $('#play-2');
   const $audio = $('#audio');
   const $scoreboards = $('.scoreboards');
@@ -101,9 +101,11 @@ $(() => {
   $submitName.on('click', function(){
     $chooseKeys.show();
     $2PKeys.hide();
+    $submitKeys2.hide();
     $player1Name.text($input.val());
     $key1.focus();
     $enterName.remove();
+    $player2Name.hide();
   });
 
   $input.keydown(function(e){
@@ -292,9 +294,11 @@ $(() => {
       $chooseKeys.hide();
 
       $submitName2.on('click', function(){
+        $player2Name.show();
         $chooseKeys.show();
         $key1.focus();
         $2PKeys.show();
+        $submitKeys2.show();
         $submitKeys.hide();
         $enterName2.remove();
         $player1Name.text($input.val());

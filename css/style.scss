@@ -52,37 +52,15 @@ header {
   margin-top: 150px;
   width: 100%;
   display: flex;
+  flex-flow: row wrap;
   justify-content: center;
-  input {
-    height: 50px;
-    border-radius: 10px;
-    font-family: 'Tajawal', 'san-serif';
-    font-size: 20px;
-    text-align: center;
-    margin: 0px 20px;
-  }
-  #name-input {
-    width: 200px;
-    height: 50px;
-    border: 4px solid #fff;
+  p {
+    font-size: 30px;
     color: #fff;
-    background-color: rgba(0, 49, 82, 0.7);
-  }
-  #go {
-    width: 100px;
-    color: rgba(0, 49, 82, 1);
-    background-color: #fff;
-    border: 4px solid rgba(0, 49, 82, .8);
     font-weight: bold;
-    line-height: 50px;
+    margin: 0 20px;
+    line-height: 60px;
   }
-}
-
-.enter-name-2 {
-  margin-top: 150px;
-  width: 100%;
-  display: flex;
-  justify-content: center;
   input {
     height: 50px;
     border-radius: 10px;
@@ -91,14 +69,14 @@ header {
     text-align: center;
     margin: 0px 20px;
   }
-  #name-input-2 {
+  .name-input {
     width: 200px;
     height: 50px;
     border: 4px solid #fff;
     color: #fff;
     background-color: rgba(0, 49, 82, 0.7);
   }
-  #go-2 {
+  .go {
     width: 100px;
     color: rgba(0, 49, 82, 1);
     background-color: #fff;
@@ -121,11 +99,17 @@ header {
     display: flex;
     justify-content: center;
     height: 50px;
-    flex-wrap: wrap;
   }
   p {
     font-size: 30px;
-    color: rgba(0, 49, 82, 1);
+    color: rgba(0, 49, 82, .7);
+  }
+  .player-names {
+    color: #fff;
+    font-weight: bold;
+    background-color: rgba(0, 49, 82, .7);
+    height: 50px;
+    line-height: 60px;
   }
   input {
     height: 50px;
@@ -151,11 +135,11 @@ header {
     font-weight: bold;
     line-height: 50px;
     }
-  #play-2 {
+  #play-button {
+    width: 100%;
+    display: flex;
+    justify-content: center;
     margin-top: 30px;
-  }
-  #player-2-name {
-    color: #fff;
   }
 }
 

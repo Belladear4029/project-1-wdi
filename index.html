@@ -20,7 +20,7 @@
         </div>
       </div>
       <section class="player-names">
-        <div id="name"></div>
+        <div id="name-1"></div>
         <div id="name-2"></div>
       </section>
     </header>
@@ -56,33 +56,34 @@
         <div id="8"></div>
       </section>
     </section>
-    <div class="enter-name">
+    <div class="enter-name" id="enter-name-1">
       <p>Player 1</p>
-      <input type="text" placeholder="Name" class="name-input" id="name-input">
-      <input type="submit" value="GO" class="name-input" id="go">
+      <input type="text" placeholder="Name" class="name-input" id="name-input-1">
+      <input type="submit" value="GO" class="go" id="go-1">
     </div>
-    <div class="enter-name-2">
+    <div class="enter-name" id="enter-name-2">
       <p>Player 2</p>
-      <input type="text" name="name" placeholder="Name" id="name-input-2">
-      <input type="submit" value="GO" id="go-2">
+      <input type="text" placeholder="Name" class="name-input" id="name-input-2">
+      <input type="submit" value="GO" class="go" id="go-2">
     </div>
     <div class="choose-keys">
       <p>Enter the keys you would like to use</p>
-      <p id="player-1-name"></p>
+      <p id="player-1-name" class="player-names"></p>
       <div class="player-1-keys">
         <input type="text" maxlength="1" class="key-inputs" id="key1">
         <input type="text" maxlength="1" class="key-inputs" id="key2">
         <input type="text" maxlength="1" class="key-inputs" id="key3">
         <input type="text" maxlength="1" class="key-inputs" id="key4">
-        <input type="submit" value="PLAY" class="play" id="play">
+        <input type="submit" value="PLAY" class="play" id="play-1">
       </div>
-      <p id="player-2-name"></p>
+      <p id="player-2-name" class="player-names"></p>
       <div class="player-2-keys">
         <input type="text" maxlength="1" class="key-inputs" id="key5">
         <input type="text" maxlength="1" class="key-inputs" id="key6">
         <input type="text" maxlength="1" class="key-inputs" id="key7">
         <input type="text" maxlength="1" class="key-inputs" id="key8">
-        <br>
+      </div>
+      <div id="play-button">
         <input type="submit" value="PLAY" class="play" id="play-2">
       </div>
     </div>
