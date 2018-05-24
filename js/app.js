@@ -1,4 +1,5 @@
 $(() => {
+
   //VARIABLES
 
   const timings1 = [329.67033, 659.340659, 1978.02198, 3296.7033, 5274.72527];
@@ -141,7 +142,7 @@ $(() => {
   //START GAME
 
   $submitKeys.on('click', function(){
-    sound();
+    // sound();
     $chooseKeys.remove();
     $1and2PTargets.show();
     $2PTargets.hide();
@@ -195,9 +196,12 @@ $(() => {
       target.css('box-shadow', 'none');
     }, 500);
     commentElement.text(comment);
+    console.log(commentElement.text());
     setTimeout(function(){
-      commentElement.fadeOut();
-    }, 1000);
+      commentElement.fadeOut(200, function(){
+        $(this).css({'display': 'block'}).text('');
+      });
+    }, 200);
   }
 
   //COLLSION DETECTION
@@ -306,6 +310,7 @@ $(() => {
     $buttons.remove();
     $enterName.show();
     $input.focus();
+    $gameName.remove();
 
     $submitName.on('click', function(){
       $enterName2.show();
@@ -341,7 +346,7 @@ $(() => {
   });
 
   $submitKeys2.on('click', function(){
-    sound();
+    // sound();
     $chooseKeys.remove();
     $1and2PTargets.show();
     $1and2PComments.show();
