@@ -1,46 +1,77 @@
 $(() => {
 
   //VARIABLES
+  const arrayOfObjects = [
+    {
+      timing: [329.67033, 659.340659, 1978.02198, 3296.7033, 5274.72527],
+      target: $('#1'),
+      key: $('#key1'),
+      comment: $('#comment1'),
+      player: 1
+    },
+    {
+      timing: [1318.68132, 1978.02198, 3296.7033, 4615.38462, 6593.40659],
+      target: $('#2'),
+      key: $('#key2'),
+      comment: $('#comment2'),
+      player: 1
+    },
+    {
+      timing: [3956.04396, 4615.38462, 5934.06593],
+      target: $('#3'),
+      key: $('#key3'),
+      comment: $('#comment3'),
+      player: 1
+    },
+    {
+      timing: [329.67033, 659.340659, 2637.36264, 5934.06593],
+      target: $('#4'),
+      key: $('#key4'),
+      comment: $('#comment4'),
+      player: 1
+    },
+    {
+      timing: [329.67033, 659.340659, 1978.02198, 3296.7033, 5274.72527],
+      target: $('#5'),
+      key: $('#key5'),
+      comment: $('#comment5'),
+      player: 2
+    },
+    {
+      timing: [1318.68132, 1978.02198, 3296.7033, 4615.38462, 6593.40659],
+      target: $('#6'),
+      key: $('#key6'),
+      comment: $('#comment6'),
+      player: 2
+    },
+    {
+      timing: [3956.04396, 4615.38462, 5934.06593],
+      target: $('#7'),
+      key: $('#key7'),
+      comment: $('#comment7'),
+      player: 2
+    },
+    {
+      timing: [329.67033, 659.340659, 2637.36264, 5934.06593],
+      target: $('#8'),
+      key: $('#key8'),
+      comment: $('#comment8'),
+      player: 2
+    }
+  ];
 
-  const timings1 = [329.67033, 659.340659, 1978.02198, 3296.7033, 5274.72527];
-  const timings2 = [1318.68132, 1978.02198, 3296.7033, 4615.38462, 6593.40659];
-  const timings3 = [3956.04396, 4615.38462, 5934.06593];
-  const timings4 = [329.67033, 659.340659, 2637.36264, 5934.06593];
-
+  const $audio = $('#audio');
   const $gameName = $('h1');
-
-  const $target1 = $('#1');
-  const $target2 = $('#2');
-  const $target3 = $('#3');
-  const $target4 = $('#4');
-
-  const $target5 = $('#5');
-  const $target6 = $('#6');
-  const $target7 = $('#7');
-  const $target8 = $('#8');
-  const $2PTargets = $('.two-targets');
-
   const $1and2PTargets = $('.one-and-two-targets');
-
-  let $ballsArray = [];
+  const $2PTargets = $('.two-targets');
 
   const $buttons = $('.buttons');
   const $1playerButton = $('#player-1');
   const $2playerButton = $('#player-2');
 
-  const $player1Comments = $('.comments');
-  const $comment1 = $('#comment1');
-  const $comment2 = $('#comment2');
-  const $comment3 = $('#comment3');
-  const $comment4 = $('#comment4');
-
-  const $player2Comments = $('.two-comments');
-  const $comment5 = $('#comment5');
-  const $comment6 = $('#comment6');
-  const $comment7 = $('#comment7');
-  const $comment8 = $('#comment8');
-
   const $1and2PComments = $('.one-and-two-comments');
+  const $player1Comments = $('.comments');
+  const $player2Comments = $('.two-comments');
 
   const $enterName = $('#enter-name-1');
   const $enterName2 = $('#enter-name-2');
@@ -58,22 +89,16 @@ $(() => {
   const $keyInputs = $('.key-inputs');
   const $keyInputs1 = $('.player-1-keys');
   const $key1 = $('#key1');
-  const $key2 = $('#key2');
-  const $key3 = $('#key3');
-  const $key4 = $('#key4');
-  const $key5 = $('#key5');
-  const $key6 = $('#key6');
-  const $key7 = $('#key7');
-  const $key8 = $('#key8');
   const $submitKeys = $('#play-1');
   const $submitKeys2 = $('#play-2');
   const $keysAndButton = $('.keys-and-button');
-  const $audio = $('#audio');
   const $scoreboards = $('.scoreboards');
   const $scoreboard2 = $('.scoreboard2');
   const $score = $('.score1');
   const $score2 = $('.score2');
   const $displayWinner = $('#winner');
+
+  let $ballsArray = [];
   let score = 0;
   let score2 = 0;
 
@@ -142,7 +167,7 @@ $(() => {
   //START GAME
 
   $submitKeys.on('click', function(){
-    // sound();
+    sound();
     $chooseKeys.remove();
     $1and2PTargets.show();
     $2PTargets.hide();
@@ -227,30 +252,12 @@ $(() => {
   //KEYDOWN COLLISION MATCH
 
   $(document).on('keydown', function(e){
-    switch(e.which){
-      case getKeyValue($key1):
-        detectCollision($target1, $comment1, 1);
-        break;
-      case getKeyValue($key2):
-        detectCollision($target2, $comment2, 1);
-        break;
-      case getKeyValue($key3):
-        detectCollision($target3, $comment3, 1);
-        break;
-      case getKeyValue($key4):
-        detectCollision($target4, $comment4, 1);
-        break;
-      case getKeyValue($key5):
-        detectCollision($target5, $comment5, 2);
-        break;
-      case getKeyValue($key6):
-        detectCollision($target6, $comment6, 2);
-        break;
-      case getKeyValue($key7):
-        detectCollision($target7, $comment7, 2);
-        break;
-      case getKeyValue($key8):
-        detectCollision($target8, $comment8, 2);
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+      switch(e.which){
+        case getKeyValue(arrayOfObjects[i].key):
+          detectCollision(arrayOfObjects[i].target, arrayOfObjects[i].comment, arrayOfObjects[i].player);
+          break;
+      }
     }
   });
 
@@ -285,10 +292,9 @@ $(() => {
   }
 
   $submitKeys.on('click', function() {
-    ballIntervals(timings1, $target1, 7252.74725);
-    ballIntervals(timings2, $target2, 7252.74725);
-    ballIntervals(timings3, $target3, 7252.74725);
-    ballIntervals(timings4, $target4, 7252.74725);
+    for (let i = 0; i < arrayOfObjects.length/2; i++) {
+      ballIntervals(arrayOfObjects[i].timing, arrayOfObjects[i].target, 7252.74725);
+    }
   });
 
   //SCORE
@@ -346,7 +352,7 @@ $(() => {
   });
 
   $submitKeys2.on('click', function(){
-    // sound();
+    sound();
     $chooseKeys.remove();
     $1and2PTargets.show();
     $1and2PComments.show();
@@ -354,15 +360,8 @@ $(() => {
     $displayName.html($input.val());
     $displayName2.html($input2.val());
 
-    ballIntervals(timings1, $target1, 7252.74725);
-    ballIntervals(timings2, $target2, 7252.74725);
-    ballIntervals(timings3, $target3, 7252.74725);
-    ballIntervals(timings4, $target4, 7252.74725);
-    ballIntervals(timings1, $target5, 7252.74725);
-    ballIntervals(timings2, $target6, 7252.74725);
-    ballIntervals(timings3, $target7, 7252.74725);
-    ballIntervals(timings4, $target8, 7252.74725);
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+      ballIntervals(arrayOfObjects[i].timing, arrayOfObjects[i].target, 7252.74725);
+    }
   });
-
-
 });
