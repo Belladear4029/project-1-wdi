@@ -399,6 +399,8 @@ $(() => {
     $scoreboards.css({'font-size': '80px', 'margin-top': '50px', 'color': 'rgba(0, 49, 82, .8)'});
     $player1Comments.css({'font-size': '50px'});
 
+    $2playerButton.remove();
+
     $submitName.on('click', function() {
       sound();
       $chooseKeys.remove();

@@ -16,7 +16,7 @@ header {
     text-align: center;
     margin-top: 20px;
     color: #fff;
-    text-shadow: #000 0px 0px 1px;
+    text-shadow: #000 0px 0px 3px;
   }
   .player-names {
     display: flex;
@@ -32,6 +32,7 @@ header {
     display: flex;
     justify-content: space-between;
     width: 100%;
+    margin-top: 20px;
     font-size: 40px;
     color: #fff;
   }
