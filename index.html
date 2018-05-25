@@ -28,8 +28,8 @@
       </section>
     </header>
     <section class="buttons">
-      <button type="button" name="" id="player-1">1 Player</button>
-      <button type="button" name="" id="player-2">2 Player</button>
+      <button type="button" class="button" id="player-1">1 Player</button>
+      <button type="button" class="button" id="player-2">2 Player</button>
     </section>
     <section class="one-and-two-comments">
       <section class="comments">
@@ -47,10 +47,10 @@
     </section>
     <section class="one-and-two-targets">
       <section class="targets">
-        <div id="1"></div>
-        <div id="2"></div>
-        <div id="3"></div>
-        <div id="4"></div>
+        <div class="one-player-targets" id="1"></div>
+        <div class="one-player-targets" id="2"></div>
+        <div class="one-player-targets" id="3"></div>
+        <div class="one-player-targets" id="4"></div>
       </section>
       <section class="two-targets">
         <div id="5"></div>
@@ -60,12 +60,12 @@
       </section>
     </section>
     <div class="enter-name" id="enter-name-1">
-      <p>Player 1</p>
+      <p class="player">Player 1</p>
       <input type="text" placeholder="Name" class="name-input" id="name-input-1">
       <input type="submit" value="GO" class="go" id="go-1">
     </div>
     <div class="enter-name" id="enter-name-2">
-      <p>Player 2</p>
+      <p class="player">Player 2</p>
       <input type="text" placeholder="Name" class="name-input" id="name-input-2">
       <input type="submit" value="GO" class="go" id="go-2">
     </div>
@@ -93,5 +93,12 @@
       </div>
     </section>
     <p id='winner'></p>
+    <!-- MOBILE VERSION -->
+    <section class="controls">
+      <div id="control1"></div>
+      <div id="control2"></div>
+      <div id="control3"></div>
+      <div id="control4"></div>
+    </section>
   </body>
 </html>

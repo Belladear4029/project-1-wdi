@@ -7,28 +7,32 @@ $(() => {
       target: $('#1'),
       key: $('#key1'),
       comment: $('#comment1'),
-      player: 1
+      player: 1,
+      control: $('#control1')
     },
     {
       timing: [1318.68132, 1978.02198, 3296.7033, 4615.38462, 6593.40659],
       target: $('#2'),
       key: $('#key2'),
       comment: $('#comment2'),
-      player: 1
+      player: 1,
+      control: $('#control2')
     },
     {
       timing: [3956.04396, 4615.38462, 5934.06593],
       target: $('#3'),
       key: $('#key3'),
       comment: $('#comment3'),
-      player: 1
+      player: 1,
+      control: $('#control3')
     },
     {
       timing: [329.67033, 659.340659, 2637.36264, 5934.06593],
       target: $('#4'),
       key: $('#key4'),
       comment: $('#comment4'),
-      player: 1
+      player: 1,
+      control: $('#control4')
     },
     {
       timing: [329.67033, 659.340659, 1978.02198, 3296.7033, 5274.72527],
@@ -63,9 +67,13 @@ $(() => {
   const $audio = $('#audio');
   const $gameName = $('h1');
   const $1and2PTargets = $('.one-and-two-targets');
+  const $1PTargets = $('.targets');
   const $2PTargets = $('.two-targets');
 
+  const $mobileControls = $('.controls');
+
   const $buttons = $('.buttons');
+  const $button = $('.button');
   const $1playerButton = $('#player-1');
   const $2playerButton = $('#player-2');
 
@@ -118,6 +126,7 @@ $(() => {
   $enterName.hide();
   $enterName2.hide();
   $displayWinner.hide();
+  $mobileControls.hide();
 
   //1 PLAYER
 
@@ -186,6 +195,9 @@ $(() => {
     $ball.addClass('balls');
     $ball.appendTo('.targets');
     $ball.css('left', `${target.position().left}px`);
+    if($.isMobile){
+      $ball.css({'height': '80px', 'width': '80px'});
+    }
     $ballsArray.push($ball);
 
     const intervalId = setInterval(function(){
@@ -221,7 +233,6 @@ $(() => {
       target.css('box-shadow', 'none');
     }, 500);
     commentElement.text(comment);
-    console.log(commentElement.text());
     setTimeout(function(){
       commentElement.fadeOut(200, function(){
         $(this).css({'display': 'block'}).text('');
@@ -287,8 +298,9 @@ $(() => {
         } else if (score === score2) {
           $displayWinner.html('It\'s a draw!');
         }
+        $audio.animate({volume: 0}, 5000);
       }, 8000);
-    }, 30000);
+    }, 40000);
   }
 
   $submitKeys.on('click', function() {
@@ -364,4 +376,53 @@ $(() => {
       ballIntervals(arrayOfObjects[i].timing, arrayOfObjects[i].target, 7252.74725);
     }
   });
+
+
+
+  //MOBILE MODE
+
+  if($.isMobile){
+    $('*').css({'border-sizing': 'border-box'});
+    $('body').css({'height': '2250px', 'width': '110%', 'background-position': 'center'});
+    $gameName.css({'font-size': '230px', 'text-shadow': '#000 0px 0px 15px'});
+    $buttons.css({'top': '900px','width': '110%'});
+    $button.css({'height': '80px', 'width': '550px', 'border': '10px solid rgba(0, 49, 82, .8)', 'margin': '30px auto', 'font-size': '30px', 'line-height': '60px'});
+    $enterName.css({'margin-top': '800px'});
+    $input.css({'height': '70px', 'width': '300px', 'font-size': '30px'});
+    $submitName.css({'font-size': '30px', 'height': '70px', 'width': '150px', 'line-height': '70px'});
+    $('.player').css({'line-height': '70px'});
+    $mobileControls.css({'margin-top': `${$(window).height() - 700}px`});
+    $1PTargets.css({'width': '100%', 'margin-top': '70px', 'height': '100px'});
+    $('.one-player-targets').css({'height': '80px'});
+    $('.one-player-targets').css({'width': '80px'});
+    $displayName.css({'font-size': '80px'});
+    $scoreboards.css({'font-size': '80px', 'margin-top': '50px', 'color': 'rgba(0, 49, 82, .8)'});
+    $player1Comments.css({'font-size': '50px'});
+
+    $submitName.on('click', function() {
+      sound();
+      $chooseKeys.remove();
+      $1and2PTargets.show();
+      $2PTargets.hide();
+      $scoreboards.show();
+      $scoreboard2.hide();
+      $player1Comments.show();
+      $player2Comments.hide();
+      $displayName.html($input.val());
+      $displayName2.remove();
+      $mobileControls.show();
+
+      for (let i = 0; i < arrayOfObjects.length/2; i++) {
+        ballIntervals(arrayOfObjects[i].timing, arrayOfObjects[i].target, 7252.74725);
+      }
+
+    });
+
+    for (let i = 0; i < arrayOfObjects.length; i++) {
+      arrayOfObjects[i].control.on('click', function(){
+        detectCollision(arrayOfObjects[i].target, arrayOfObjects[i].comment, arrayOfObjects[i].player);
+      });
+    }
+  }
+
 });
