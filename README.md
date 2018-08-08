@@ -8,7 +8,7 @@ Our first project was to create a game using HTML, CSS and Javascript using the 
 
 <p align="center">Play Here!</p>
 
-<p align="center"><img src="./Homepage.png" width="700"></p>
+<p align="center"><img src="./screenshots/homepage.png" width="700"></p>
 
 ###### You have a choice of 1 or 2 player, you can enter your name and also choose your keys before the game starts.
 
