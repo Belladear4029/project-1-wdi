@@ -8,17 +8,17 @@ Our first project was to create a game using HTML, CSS and Javascript using the 
 
 <p align="center">Play Here!</p>
 
-<p align="center"><img src="./homepage.png" width="700"></p>
+<p align="center"><img src="./Homepage.png" width="700"></p>
 
 ###### You have a choice of 1 or 2 player, you can enter your name and also choose your keys before the game starts.
 
 <br>
 
-<p align="center"><img src="./name_page.png" width="700"></p>
+<p align="center"><img src="./screenshots/name_page.png" width="700"></p>
 
-<p align="center"><img src="./key_page.png" width="700"></p>
+<p align="center"><img src="./screenshots/key_page.png" width="700"></p>
 
-<p align="center"><img src="./game recording.gif" width="700"></p>
+<p align="center"><img src="./screenshots/game_recording.gif" width="700"></p>
 
 ###### As the balls overlap with their corresponding targets, the player has to press the key which they assigned to that target. The better the accuracy, the better the score.
 
