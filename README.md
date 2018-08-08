@@ -1,6 +1,6 @@
-![image](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png)
+# ![image](https://ga-dash.s3.amazonaws.com/production/assets/logo-9f88ae6c9c3871690e33280fcf557f33.png) WDI 34 Project 1
 
-# GA WDI-34 Project 1 - Tap Tap
+## Tap Tap
 
 Our first project was to create a game using HTML, CSS and Javascript using the jQuery Library. I created a similar styled game to 'Guitar Hero' and 'Tap Tap Revenge', with the aim of the game being to tap different keys in sync with when balls coming up the page come into contact with targets at the top, all in time with music.
 
