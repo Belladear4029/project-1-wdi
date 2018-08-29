@@ -41,7 +41,7 @@ the outcome. I was really happy to achieve almost all of my ideas that I had whe
 
 It was a challenge to keep the website running smoothly when there were so many balls being generated and calculations going on at the same time. I resolved this by having clean code and removing any elements that weren't on the page at any given time.
 
-Initially I did one player then attempted two player. In hind sight I would have started with the intent to do two player. This would have meant my HTML structure and variable names would have been better and more clear. However I now feel I will be better at planning my projects in the future as I have more of an idea how to structure and order my elements and functions.
+Initially I did one player then attempted two player. In hind sight I would have started with the intention of doing two player. This would have meant my HTML structure and variable names would have been better and more clear. However I now feel I will be better at planning my projects in the future as I have more of an idea how to structure and order my elements and functions.
 
 #### Further Additions
 If I were to add further aspects to the game I would make 2 player available in mobile mode, as well as create more levels with different music. I would also set up a high score function where a record of previous high scores are stored and can be seen for new players to beat.
